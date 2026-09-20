@@ -7,7 +7,6 @@
 }
 body{
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  background: #720d0d;
 }

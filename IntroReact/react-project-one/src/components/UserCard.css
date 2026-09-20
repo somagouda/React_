@@ -1,0 +1,21 @@
+.User-Card {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+}
+
+.User-Card img {
+    width: 150px;
+    height: 150px;
+
+    border-radius: 50%;
+    object-fit: cover;
+
+    border: 4px solid white;
+}
