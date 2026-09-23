@@ -1,40 +1,36 @@
 import { useRef } from 'react';
 import './App.css';
+import { useState } from 'react';
+
 
 function App() {
-  let btnRef = useRef();
-  let input1Ref = useRef();
-  let input2Ref = useRef();
+  const[time,settime]=useState(0);
+  const intervalRef = useRef(null);
 
-  function changecolor() {
-    btnRef.current.style.backgroundColor = "red";
-
-    // Get text from first input
-    let text = input1Ref.current.value;
-
-    // Put text into second input
-    input2Ref.current.value = text;
+  function starttimer(){
+    intervalRef.current = setInterval(()=>{
+      settime(time=>time+1);
+    }, 1000);
   }
+  function stoptimer(){
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
+  }
+  function resettimer(){
+    stoptimer();
+    settime(0);
+  }
+ 
 
   return (
     <div>
-      <input
-        ref={input1Ref}
-        type="text"
-        placeholder="copy"
-      />
-
-      <button ref={btnRef} onClick={changecolor}>
-        Copy
-      </button>
-
-      <br />
-
-      <input
-        ref={input2Ref}
-        type="text"
-        placeholder="paste"
-      />
+      <h>stop watch: {time}</h>
+      <button onClick={starttimer}>start</button>
+      <br/>
+      <button onClick={stoptimer}>stop</button>
+       <br/>
+      <button onClick={resettimer}>reset</button>
+      
     </div>
   );
 }
